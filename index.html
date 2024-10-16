@@ -51,7 +51,7 @@
       
       notes.value = text;
 
-      notes.addEventListener('input', () => {
+      function updateCounts() {
         const text = notes.value;
         const charCount = text.length;
         const wordCount = text.split(/\s+/).filter(Boolean).length;
@@ -60,7 +60,11 @@
         words.textContent = `Words: ${wordCount}`;
 
         localStorage.setItem('text', text);
-      });
+      }
+
+      notes.addEventListener('input', updateCounts);
+
+      updateCounts();
     </script>
   </body>
 </html>
